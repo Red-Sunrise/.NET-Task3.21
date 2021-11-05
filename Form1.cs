@@ -14,7 +14,7 @@ namespace Task3
     public partial class Form1 : Form
     {
         private List<CarriageDisplay> ListDisplayedCarriages = new List<CarriageDisplay>();
-        private List<Carriage> Carriages = new List<Carriage>();
+        private Train Train = new Train();
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace Task3
             foreach(CarriageDisplay current in this.ListDisplayedCarriages)
             {
                 current.Visible = false;
-                this.Carriages.Remove(current.carriage);
+                this.Train.GetCarriages().Remove(current.carriage);
             }
             this.ListDisplayedCarriages.Clear();
             ChangeScroller();
@@ -49,7 +49,7 @@ namespace Task3
             }
             this.ListDisplayedCarriages.Clear();
 
-            foreach(Carriage carriage in this.Carriages)
+            foreach(Carriage carriage in this.Train.GetCarriages())
             {
                 int index = PositionInList(carriage);
                 if(index >= 0)
@@ -64,7 +64,7 @@ namespace Task3
         private void RemoveCarriage(CarriageDisplay carriage)
         {
             this.ListDisplayedCarriages.Remove(carriage);
-            this.Carriages.Remove(carriage.carriage);
+            Train.GetCarriages().Remove(carriage.carriage);
             carriage.Visible = false;
             SetCarriageLocation(0);
             ChangeScroller();
@@ -72,7 +72,7 @@ namespace Task3
 
         public void AddCarriage(Carriage carriage)
         {
-            this.Carriages.Add(carriage);
+            Train.GetCarriages().Add(carriage);
             int index = PositionInList(carriage);
             if (index >= 0)
             {

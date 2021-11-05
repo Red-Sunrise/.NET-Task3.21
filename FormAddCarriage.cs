@@ -17,7 +17,6 @@ namespace Task3
         public FormAddCarriage(Form1 form)
         {
             InitializeComponent();
-
             this.form = form;
         }
 
@@ -30,6 +29,5 @@ namespace Task3
             form.AddCarriage(carriage);
             this.Close();
         }
-         
     }
 }
