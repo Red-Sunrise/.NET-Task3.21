@@ -30,7 +30,7 @@ namespace Task3
             foreach(CarriageDisplay current in this.ListDisplayedCarriages)
             {
                 current.Visible = false;
-                this.Train.GetCarriages().Remove(current.carriage);
+                this.Train.Carriages.Remove(current.carriage);
             }
             this.ListDisplayedCarriages.Clear();
             ChangeScroller();
@@ -49,7 +49,7 @@ namespace Task3
             }
             this.ListDisplayedCarriages.Clear();
 
-            foreach(Carriage carriage in this.Train.GetCarriages())
+            foreach(Carriage carriage in this.Train.Carriages)
             {
                 int index = PositionInList(carriage);
                 if(index >= 0)
@@ -64,7 +64,7 @@ namespace Task3
         private void RemoveCarriage(CarriageDisplay carriage)
         {
             this.ListDisplayedCarriages.Remove(carriage);
-            Train.GetCarriages().Remove(carriage.carriage);
+            Train.Carriages.Remove(carriage.carriage);
             carriage.Visible = false;
             SetCarriageLocation(0);
             ChangeScroller();
@@ -72,7 +72,7 @@ namespace Task3
 
         public void AddCarriage(Carriage carriage)
         {
-            Train.GetCarriages().Add(carriage);
+            Train.Carriages.Add(carriage);
             int index = PositionInList(carriage);
             if (index >= 0)
             {

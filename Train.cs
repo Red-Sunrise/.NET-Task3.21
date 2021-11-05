@@ -9,15 +9,10 @@ namespace Task3
 {
     public class Train
     {
-        private List<Carriage> carriages;
-
         public Train()
         {
-            this.carriages = new List<Carriage>();
+            this.Carriages = new List<Carriage>();
         }
-        public List<Carriage> GetCarriages()
-        {
-            return carriages;
-        }
+        public List<Carriage> Carriages { get; }
     }
 }
