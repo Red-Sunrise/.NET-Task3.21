@@ -13,7 +13,7 @@ namespace Task3
 {
     public partial class Form1 : Form
     {
-        private List<CarriageInfo> CarriagesList = new List<CarriageInfo>();
+        private List<CarriageDisplay> ListDisplayedCarriages = new List<CarriageDisplay>();
         private List<Carriage> Carriages = new List<Carriage>();
         public Form1()
         {
@@ -26,12 +26,12 @@ namespace Task3
 
         private void ClearListButton_Click(object sender, EventArgs e)
         {
-            foreach(CarriageInfo current in this.CarriagesList)
+            foreach(CarriageDisplay current in this.ListDisplayedCarriages)
             {
                 current.Visible = false;
                 this.Carriages.Remove(current.carriage);
             }
-            this.CarriagesList.Clear();
+            this.ListDisplayedCarriages.Clear();
             ChangeScroller();
         }
         private void ChangeScrollerValue(object sender,EventArgs e)
@@ -41,18 +41,18 @@ namespace Task3
 
         private void UpdateCarriagesListFilters(object sender,EventArgs e)
         {
-            foreach(CarriageInfo current in this.CarriagesList)
+            foreach(CarriageDisplay current in this.ListDisplayedCarriages)
             {
                 current.Visible = false;
             }
-            this.CarriagesList.Clear();
+            this.ListDisplayedCarriages.Clear();
 
             foreach(Carriage carriage in this.Carriages)
             {
                 int index = PositionInList(carriage);
                 if(index >= 0)
                 {
-                    this.CarriagesList.Insert(index, new CarriageInfo(carriage, this));
+                    this.ListDisplayedCarriages.Insert(index, new CarriageDisplay(carriage, this));
 
                     SetCarriageLocation(index);
                     ChangeScroller();
@@ -60,9 +60,9 @@ namespace Task3
             }
         }
 
-        private void RemoveCarriage(CarriageInfo carriage)
+        private void RemoveCarriage(CarriageDisplay carriage)
         {
-            this.CarriagesList.Remove(carriage);
+            this.ListDisplayedCarriages.Remove(carriage);
             this.Carriages.Remove(carriage.carriage);
             carriage.Visible = false;
 
@@ -76,7 +76,7 @@ namespace Task3
             int index = PositionInList(carriage);
             if (index >= 0)
             {
-                this.CarriagesList.Insert(index, new CarriageInfo(carriage, this));
+                this.ListDisplayedCarriages.Insert(index, new CarriageDisplay(carriage, this));
 
                 SetCarriageLocation(index);
                 ChangeScroller();
@@ -100,7 +100,7 @@ namespace Task3
             }
 
             int index = 0;
-            foreach(CarriageInfo current in this.CarriagesList)
+            foreach(CarriageDisplay current in this.ListDisplayedCarriages)
             {
                 if("Comfort Level".Equals(comboBoxOrder.Text) && carriage.ComfortLevel <= current.carriage.ComfortLevel ||
                     "Passenger Amount".Equals(comboBoxOrder.Text) && carriage.PassengerAmount <= current.carriage.PassengerAmount ||
@@ -116,14 +116,14 @@ namespace Task3
         private void ChangeScroller()
         {
             this.vScrollBar1.Minimum = 0;
-            if (this.CarriagesList.Count <= 3)
+            if (this.ListDisplayedCarriages.Count <= 3)
             {
                 this.vScrollBar1.Value = 0;
                 this.vScrollBar1.Maximum = 0;
             }
             else
             {
-                int max = (this.CarriagesList.Count - 3) * 90;
+                int max = (this.ListDisplayedCarriages.Count - 3) * 90;
                 if (this.vScrollBar1.Value > max) 
                 { 
                     this.vScrollBar1.Value = max; 
@@ -138,16 +138,16 @@ namespace Task3
         }
         private void SetCarriageLocation(int startIndex)
         {
-            for (int i = startIndex; i < this.CarriagesList.Count; i++)
+            for (int i = startIndex; i < this.ListDisplayedCarriages.Count; i++)
             {
-                CarriageInfo current = this.CarriagesList[i];
+                CarriageDisplay current = this.ListDisplayedCarriages[i];
                 current.Location = AddNewPoint(i);
             }
         }
 
 
 
-        private class CarriageInfo : Panel
+        private class CarriageDisplay : Panel
         {
             internal Carriage carriage;
             private Label descriptionLabel = new Label();
@@ -159,7 +159,7 @@ namespace Task3
                 this.form.RemoveCarriage(this);
             }
             
-            public CarriageInfo(Carriage carriage,Form1 form)
+            public CarriageDisplay(Carriage carriage,Form1 form)
             {
                 this.carriage = carriage;
                 this.form = form;
