@@ -34,6 +34,7 @@ namespace Task3
             }
             this.ListDisplayedCarriages.Clear();
             ChangeScroller();
+            UpdateTrainInformation();
         }
 
         private void ChangeScrollerValue(object sender,EventArgs e)
@@ -68,6 +69,7 @@ namespace Task3
             carriage.Visible = false;
             SetCarriageLocation(0);
             ChangeScroller();
+            UpdateTrainInformation();
         }
 
         public void AddCarriage(Carriage carriage)
@@ -80,6 +82,7 @@ namespace Task3
                 SetCarriageLocation(index);
                 ChangeScroller();
             }
+            UpdateTrainInformation();
         }
 
         private int PositionInList(Carriage carriage)
@@ -143,6 +146,14 @@ namespace Task3
                 CarriageDisplay current = this.ListDisplayedCarriages[i];
                 current.Location = AddNewPoint(i);
             }
+        }
+
+        private void UpdateTrainInformation()
+        {
+            int totalPassengerAmount = Train.GetPassengerAmount();
+            int totalBaggageAmount = Train.GetBaggageAmount();
+            TotalPassengerAmount.Text = Convert.ToString(totalPassengerAmount);
+            TotalBaggageAmount.Text = Convert.ToString(totalBaggageAmount);
         }
 
         private class CarriageDisplay : Panel

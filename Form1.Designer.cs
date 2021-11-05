@@ -50,6 +50,10 @@
             this.MaxPassengerAmount = new System.Windows.Forms.NumericUpDown();
             this.MinPassengerAmount = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TotalPassengerAmount = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.TotalBaggageAmount = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxBaggageAmount)).BeginInit();
@@ -296,11 +300,51 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Passenger Amount:";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 428);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(135, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Total Passenger Amount = ";
+            // 
+            // TotalPassengerAmount
+            // 
+            this.TotalPassengerAmount.AutoSize = true;
+            this.TotalPassengerAmount.Location = new System.Drawing.Point(150, 428);
+            this.TotalPassengerAmount.Name = "TotalPassengerAmount";
+            this.TotalPassengerAmount.Size = new System.Drawing.Size(13, 13);
+            this.TotalPassengerAmount.TabIndex = 19;
+            this.TotalPassengerAmount.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 441);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(125, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Total Baggage Amount =";
+            // 
+            // TotalBaggageAmount
+            // 
+            this.TotalBaggageAmount.AutoSize = true;
+            this.TotalBaggageAmount.Location = new System.Drawing.Point(150, 441);
+            this.TotalBaggageAmount.Name = "TotalBaggageAmount";
+            this.TotalBaggageAmount.Size = new System.Drawing.Size(13, 13);
+            this.TotalBaggageAmount.TabIndex = 21;
+            this.TotalBaggageAmount.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 450);
+            this.ClientSize = new System.Drawing.Size(584, 461);
+            this.Controls.Add(this.TotalBaggageAmount);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.TotalPassengerAmount);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.ClearListButton);
             this.Controls.Add(this.AddCarriageButton);
@@ -317,6 +361,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaxPassengerAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinPassengerAmount)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -344,5 +389,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxOrder;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label TotalPassengerAmount;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label TotalBaggageAmount;
     }
 }
