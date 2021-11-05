@@ -19,6 +19,7 @@ namespace Task3
         {
             InitializeComponent();
         }
+
         private void AddCarriageButton_Click(object sender, EventArgs e)
         {
             new FormAddCarriage(this).ShowDialog();
@@ -34,6 +35,7 @@ namespace Task3
             this.ListDisplayedCarriages.Clear();
             ChangeScroller();
         }
+
         private void ChangeScrollerValue(object sender,EventArgs e)
         {
             SetCarriageLocation(0);
@@ -53,7 +55,6 @@ namespace Task3
                 if(index >= 0)
                 {
                     this.ListDisplayedCarriages.Insert(index, new CarriageDisplay(carriage, this));
-
                     SetCarriageLocation(index);
                     ChangeScroller();
                 }
@@ -65,7 +66,6 @@ namespace Task3
             this.ListDisplayedCarriages.Remove(carriage);
             this.Carriages.Remove(carriage.carriage);
             carriage.Visible = false;
-
             SetCarriageLocation(0);
             ChangeScroller();
         }
@@ -77,7 +77,6 @@ namespace Task3
             if (index >= 0)
             {
                 this.ListDisplayedCarriages.Insert(index, new CarriageDisplay(carriage, this));
-
                 SetCarriageLocation(index);
                 ChangeScroller();
             }
@@ -128,14 +127,15 @@ namespace Task3
                 { 
                     this.vScrollBar1.Value = max; 
                 }
- 
                 this.vScrollBar1.Maximum = max;
             }
         }
+
         private Point AddNewPoint(int index)
         {
             return new Point(5, 30 + 90 * index - vScrollBar1.Value);
         }
+
         private void SetCarriageLocation(int startIndex)
         {
             for (int i = startIndex; i < this.ListDisplayedCarriages.Count; i++)
@@ -144,8 +144,6 @@ namespace Task3
                 current.Location = AddNewPoint(i);
             }
         }
-
-
 
         private class CarriageDisplay : Panel
         {
