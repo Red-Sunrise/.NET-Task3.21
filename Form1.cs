@@ -150,8 +150,8 @@ namespace Task3
 
         private void UpdateTrainInformation()
         {
-            int totalPassengerAmount = Train.GetPassengerAmount();
-            int totalBaggageAmount = Train.GetBaggageAmount();
+            int totalPassengerAmount = Train.TotalPassengerAmount;
+            int totalBaggageAmount = Train.TotalBaggageAmount;
             TotalPassengerAmount.Text = Convert.ToString(totalPassengerAmount);
             TotalBaggageAmount.Text = Convert.ToString(totalBaggageAmount);
         }
@@ -163,7 +163,7 @@ namespace Task3
             private Button removeButton = new Button();
             private Form1 form;
 
-            private void removeButton_Click(object sender,EventArgs e)
+            private void RemoveButton_Click(object sender,EventArgs e)
             {
                 this.form.RemoveCarriage(this);
             }
@@ -181,7 +181,7 @@ namespace Task3
 
                 this.removeButton.AutoSize = true;
                 this.removeButton.Text = "Remove.";
-                this.removeButton.Click += new EventHandler(this.removeButton_Click);
+                this.removeButton.Click += new EventHandler(this.RemoveButton_Click);
                 this.removeButton.Location = new Point(0, 60);
                 this.Controls.Add(this.removeButton);
 
